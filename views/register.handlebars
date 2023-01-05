@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Kayıt ol</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+  <link rel="icon" href="images/favicon.ico?v=1.1">
+  <link rel="stylesheet" href="styles/register.css">
+  <script src="js/validate.js"></script>
+  <script src="js/captcha.js"></script>
+</head>
+
+
+<body onload="createCaptcha();">
+  <div class="w3-top op">
+    <div class="w3-row w3-large">
+      <div class="w3-col s3">
+        <a href="notifs" class="w3-button w3-block">Duyurular</a>
+      </div>
+      <div class="w3-col s3">
+        <a href="release" class="w3-button w3-block">Anasayfa</a>
+      </div>
+      <div class="w3-col s3">
+        <a href="trynow" class="w3-button w3-block">İndir</a>
+      </div>
+      <div class="w3-col s3">
+        <a href="banlist" class="w3-button w3-block">Ban Listesi</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+    <div class="w3-display-middle custom">
+      {{#if already}}
+      <h1 class="w3-xlarge w3-animate-top" style="color: #111">Böyle bir kullanıcı zaten mevcut!</h1>
+      {{else}}
+      <h1 class="w3-xlarge w3-animate-top" style="color: #111">Lütfen türkçe karakter kullanmayınız. </h1>
+      {{/if}}
+      <form name="myForm" action="/sign_up" onsubmit="return validateForm()" method="POST">
+        <input class="w3-animate-top " type="text" name="username" placeholder="Kullanıcı adı">
+        <input class="w3-animate-top" type="text" name="email" placeholder="E-Mail">
+
+        <h1 id="captcha"></h1>
+        <input type="text" id="cpatchaTextBox" placeholder="Onay Kodu" />
+
+        <input class="button w3-animate-top" type="submit" value="Şimdi Kayıt Ol" style="background-color: crimson;">
+
+      </form>
+      </p>
+    </div>
+  </div>
+</body>
+
+</html>
