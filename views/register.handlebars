@@ -37,14 +37,14 @@
       {{#if already}}
       <h1 class="w3-xlarge w3-animate-top" style="color: #111">Böyle bir kullanıcı zaten mevcut!</h1>
       {{else}}
-      <h1 class="w3-xlarge w3-animate-top" style="color: #111">Lütfen türkçe karakter kullanmayınız. </h1>
+      <h1 class="w3-xlarge w3-animate-top" style="color: #111">Minecraft kullanıcı adınız ile buraya yazacağınız kullanıcı adı aynı olmalıdır!</h1>
       {{/if}}
       <form name="myForm" action="/sign_up" onsubmit="return validateForm()" method="POST">
         <input class="w3-animate-top " type="text" name="username" placeholder="Kullanıcı adı">
         <input class="w3-animate-top" type="text" name="email" placeholder="E-Mail">
 
         <h1 id="captcha"></h1>
-        <input type="text" id="cpatchaTextBox" placeholder="Onay Kodu" />
+        <input type="text" id="cpatchaTextBox" placeholder="Captha Doğrulama Kodu" />
 
         <input class="button w3-animate-top" type="submit" value="Şimdi Kayıt Ol" style="background-color: crimson;">
 

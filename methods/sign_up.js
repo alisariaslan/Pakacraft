@@ -35,8 +35,8 @@ exports.signUp = (req, res) => {
                 }
                 else {
                     console.log(my_date.getdatelog() + "Yeni kullanıcı oluşturuldu.\n" + data);
-                    mc_server.sendToProcess('easywl add ' + uname);
-                    mc_server.sendToProcess('say ' + uname + ' whitelist kaydını yaptırdı. Birazdan aramızda olur hep beraber hoş geldin diyelim.');
+                    //mc_server.sendToProcess('easywl add ' + uname);
+                    //mc_server.sendToProcess('say ' + uname + ' whitelist kaydını yaptırdı. Birazdan aramızda olur hep beraber hoş geldin diyelim.');
                     res.render('verify_warn', {
                         uname: newUser.username,
                         pass: newUser.password

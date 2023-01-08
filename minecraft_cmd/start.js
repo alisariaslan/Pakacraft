@@ -1,4 +1,6 @@
-var spawner = 'cd minecraft_server && java -Xms2G -Xmx2G -jar paper-1.19.3-368.jar';
+/*
+
+var spawner = 'cd minecraft_server && java -Xms4G -Xmx4G -jar paper-1.19.3-368.jar';
 var os = require("os");
 var status_changer = require('./status_changer');
 var my_date = require('.././my_modules/my_date');
@@ -64,3 +66,5 @@ var applyConstantly = function () {
 };
 
 setTimeout(applyConstantly, 60000);
+
+*/

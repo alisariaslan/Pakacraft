@@ -11,6 +11,7 @@
   <script src="js/audio.js"></script>
   <link rel="icon" href="images/favicon.ico?v=1.1">
   <link rel="stylesheet" href="styles/release.css">
+
 </head>
 
 <body onload=" readFile('version.txt','version'); readFile('ip.txt','ip'); readFile('status.txt','status');">
@@ -35,6 +36,14 @@
 
   <div class="parent w3-display-container w3-animate-opacity w3-text-white">
     <div class="child w3-display-middle"> </div>
+    <div>
+      <a href="images/mobil.png">
+        <img class="w3-display-left" src="images/mobil.png" style="opacity: .75;" width="300px" height="200px">
+      </a>
+      <a href="images/pc.png">
+        <img class="w3-display-right" src="images/pc.png" style="opacity: .75;" width="300px" height="300px">
+      </a>
+    </div>
     <div class="w3-display-bottomleft w3-padding-large w3-xlarge">
       <div style="background-image: url(images/battle-icon.png)"></div>
       <img class="disable" src="images/server-icon.jpg" width="200px" height="200px" style="opacity: .5;">
@@ -49,21 +58,28 @@
       <br>
       <h1 id="version">version.txt</h1>
     </div>
-     <div class="w3-display-topright w3-padding-large w3-xlarge">
+    <div class="w3-display-topright w3-padding-large w3-xlarge">
       <br>
-       <h1 style="display: inline-block;" >Sunucu durumu:&nbsp;&nbsp;&nbsp;</h1>
+      <h1 style="display: inline-block;">Sunucu durumu:&nbsp;&nbsp;&nbsp;</h1>
       <h1 style="display: inline-block;" id="status">status.txt</h1>
     </div>
     <div class="w3-display-middle">
-      <h1 class="w3-jumbo w3-animate-top">PAKA CRAFT</h1>
-      <hr class="w3-border-grey" style="margin:auto;width:40%">
-      <p class="w3-large w3-center" style="display: inline-block;">IP Adresimiz: &nbsp;
-      <div class="w3-large w3-center" style="display:inline-block;" id="ip"></div>
+      <h1 class="w3-jumbo w3-animate-top w3-center">PAKA CRAFT</h1>
+      <hr class="w3-border-grey">
+      <p class="w3-xlarge w3-center">
+        Pc IP Adresimiz:
+        <br>
+        alisariaslan.duckdns.org:25565
+        <br>
+        <br>
+        Tel IP Adresimiz:
+        <br>
+        alisariaslan.duckdns.org:19132
       </p>
-      <p class="w3-large w3-center">Sunucuya girebilmek için lütfen whitelist kaydınızı
-        yapın.
+      <p class="w3-large w3-center">Sunucuya girebilmek whitelist kaydı yapmanıza
+        şimdilik gerek yok. Fakat ileride whitelist zorunlu olacaktır.
       </p>
-       <p class="w3-large w3-center">İletişim: sarsyazilim@gmail.com
+      <p class="w3-large w3-center">İletişim: sarsyazilim@gmail.com
       </p>
     </div>
   </div>
