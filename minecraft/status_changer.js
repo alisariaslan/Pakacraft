@@ -1,3 +1,4 @@
+
 var my_date = require('../my_modules/my_date');
 var fs = require('fs');
 
@@ -18,3 +19,5 @@ exports.setStatOFF = function () {
           console.log(my_date.getdatelog() + 'status.txt dosyasına "Pasif" yazıldı.');
       });
 };
+
+

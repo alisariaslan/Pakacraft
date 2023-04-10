@@ -1,16 +1,11 @@
 {
-  "name": "pakacraft_webserver",
-  "version": "1.0.0",
-  "description": "Project files in the web server belonging to PakaCraft.",
-  "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
+    "date-and-time": "^2.4.3",
     "express": "^4.18.2",
     "express3-handlebars": "^0.5.2",
-    "mongoose": "^6.8.2"
+    "fast-xml-parser": "^4.2.0",
+    "mongoose": "^7.0.3",
+    "prompt-async": "^0.9.9",
+    "prompt-sync": "^4.2.0"
   }
 }

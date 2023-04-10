@@ -3,13 +3,14 @@
 var spawner = 'cd minecraft_server && java -Xms4G -Xmx4G -jar paper-1.19.3-368.jar';
 var os = require("os");
 var status_changer = require('./status_changer');
-var my_date = require('.././my_modules/my_date');
+
 var fs = require('fs');
 
 //CHILD PROCESS
 var { spawn } = require('child_process');
 var process = spawn(spawner, [""], { shell: true });
 process.stdin.setEncoding('utf-8');
+
 
 //WHEN PROCESS HAS DATA
 process.stdout.on('data', function (data) {
@@ -28,17 +29,14 @@ process.stderr.on('data', function (data) {
 process.on('close', function (data) {
   console.log(my_date.getdatelog() + 'Minecraft sunucusu kapandı.');
   status_changer.setStatOFF();
+  process = spawn(spawner, [""], { shell: true });
+  process.stdin.setEncoding('utf-8');
 });
 
 //WHEN CHILD PROCESS ON START
-process.on('spawn', function (data) {
-  console.log(my_date.getdatelog() + 'Minecraft sunucusu başlatılıyor...');
-});
 
-var sendToProces = exports.sendToProcess = function (data) {
-  process.stdin.write(data);
-  process.stdin.write(os.EOL);
-};
+
+
 
 setTimeout(function () {
   sendToProces('say Sunucu aktif. Web hizmetlerine bilgi veriliyor...');
