@@ -16,83 +16,51 @@
   <link rel="stylesheet" href="styles/topnav.css">
 </head>
 
-<body
-  onload="M_READ('info.xml','version','version');
+<body onload="M_READ('info.xml','version','version');
           M_READ('info.xml','status','state');
           C_CHANGE('status');
           M_READ('info.xml','pclink','pc_link');
           M_READ('info.xml','mobillink','mobile_link');">
-
-<div class="topnav" id="myTopnav">
-  <a href="#home" class="active">Ana Sayfa</a>
-  <a href="#news">Duyurular</a>
-  <a href="#contact">Contact</a>
-  <a href="#about">About</a>
-    <a href="#news">Duyurular</a>
-  <a href="#contact">Contact</a>
-  <a href="#about">About</a>
-    <a href="#news">Duyurular</a>
-  <a href="#contact">Contact</a>
-  <a href="#about">About</a>
-  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-    <i class="fa fa-bars"></i>
-  </a>
-</div>
-
+  <div class="topnav" id="myTopnav">
+    <a href="index" class="active disable">Ana Sayfa</a>
+    <a href="notifs">Duyurular</a>
+    <a href="logs">Loglar</a>
+    <a href="tutorial">Rehber</a>
+    <a href="files">Dosyalar</a>
+    <a href="me">Panelim</a>
+  </div>
   <div class="parent w3-display-container w3-animate-opacity w3-text-white">
-    <div class="child w3-display-middle"> </div>
-    <div>
-      <a href="images/mobil.png">
-        <img class="w3-display-left" src="images/mobil.png" style="opacity: .75;" width="300px" height="200px">
-      </a>
-      <a href="images/pc.png">
-        <img class="w3-display-right" src="images/pc.png" style="opacity: .75;" width="300px" height="300px">
-      </a>
-    </div>
+    <div class="child w3-display-middle" />
     <div class="w3-display-bottomleft w3-padding-large">
-      <img class="image_op disable" src="images/server-icon-highres.png"
+      <img class="image_op disable" src="images/icon.png"
         style="opacity: .5; height:20vw; max-height:200px;">
     </div>
     <div class="w3-display-bottomright w3-padding-large ">
       <a href="https://www.linkedin.com/in/alisariaslan">
-        <img class="image_op" src="images/sars-icon.jpg" style="height:20vw; max-height:200px;">
+        <img class="image_op" src="images/sars.jpg" style="height:20vw; max-height:200px;">
       </a>
     </div>
-    <div class="w3-display-topleft w3-padding-large w3-xlarge" style="margin-top: 50px;">
-      <div>
-        <span>Sunucu durumu:&nbsp;&nbsp;&nbsp;</span>
-        <span id="status">status.txt</span>
-      </div>
-      <div>
-        <span>Sürüm:</span>
-        <span id="version">version.txt</span>
-      </div>
+    <div class="w3-display-topleft w3-padding-large w3-large" style="margin-top: 30px;">
+      <div><span>Sunucu durumu:&nbsp;&nbsp;&nbsp;</span><span id="status">status.txt</span></div>
+      <div><span>Sürüm:</span><span id="version">version.txt</span> </div>
     </div>
     <div class="w3-display-middle">
       <h1 class="w3-animate-top w3-center">PAKA CRAFT</h1>
       <hr class="w3-animate-top w3-border-grey">
-      <p class="w3-animate-top w3-xlarge w3-center">
-        Pc IP Adresimiz:
-        <br>
-        <span id="pclink">Bilinmiyor</span>
-        <br>
-        <br>
-        Mobil IP Adresimiz:
-        <br>
-        <span id="mobillink">Bilinmiyor</span>
-      </p>
-      <p class="w3-animate-top w3-large w3-center">Sunucuya girebilmek için şimdilik whitelist kaydı yapmanıza gerek
-        yok. Fakat ileride whitelist zorunlu olacaktır.</p>
-      <p class="w3-animate-top w3-large w3-center">İletişim: <a href="https://discord.gg/zcVCUpRkra" target="_blank" class="w3-large"
-          style="color:#77f; text-shadow: 0px 0px 30px #fff;">
+      <p class="w3-animate-top w3-xlarge w3-center"> Pc IP Adresimiz:<br><span id="pclink">Bilinmiyor</span><br> <br>
+        Mobil IP Adresimiz: <br><span id="mobillink">Bilinmiyor</span> </p>
+      <p class="w3-animate-top w3-large w3-center">Sunucuya girebilmek için şimdilik kullanıcı kaydı yapmanıza gerek
+        yok. Fakat ileride kullanıcı kaydı zorunlu olacaktır.</p>
+      <p class="w3-animate-top w3-large w3-center">İletişim: <a href="https://discord.gg/zcVCUpRkra" target="_blank"
+          class="w3-large" style="color:#77f; text-shadow: 0px 0px 30px #fff;">
           <div class="w3-animate-top w3-center">
             <span style="vertical-align: bottom;">Discord</span>
-            <img src="images/dc-icon.png" height="40" />
+            <img src="images/dc.png" height="40" />
           </div>
         </a>
       </p>
-
     </div>
+  </div>
   </div>
 </body>
 
