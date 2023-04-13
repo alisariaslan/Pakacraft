@@ -3,12 +3,7 @@
     src: url("../fonts/Minecraftia-Regular.ttf");
   }
   
-  h1 {
-    font-family: "Minecraft";
-    src: url("../fonts/Minecraftia-Regular.ttf");
-  }
-  
-  div {
+  div,h1,h2,h3 {
     font-family: "Minecraft";
     src: url("../fonts/Minecraftia-Regular.ttf");
   }
