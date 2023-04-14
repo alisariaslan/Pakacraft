@@ -1,25 +1,8 @@
 --Öncelikle bir sertifika ve özel anahtar oluşturmanız gerekiyor. Bu işlemi gerçekleştirmek için OpenSSL'i kullanabilirsiniz. Aşağıdaki komutu kullanarak bir özel anahtar dosyası oluşturabilirsiniz:
 openssl genrsa -out key.pem 2048
-
 --Daha sonra aşağıdaki komutu kullanarak bir sertifika isteği dosyası oluşturun:
 openssl req -new -key key.pem -out csr.pem
 --Bu komut çalıştırıldığında sizden bazı bilgiler istenecektir (örneğin ülke kodu, şehir, kuruluş adı vb.). Bu bilgileri doğru şekilde girin.
-
-Country Name (2 letter code) [AU]:			TR
-State or Province Name (full name) [Some-State]:		Turkey
-Locality Name (eg, city) []:				Kocaeli
-Organization Name (eg, company) [Internet Widgits Pty Ltd]:	SARS Yazılım
-Organizational Unit Name (eg, section) []:			SARS
-Common Name (e.g. server FQDN or YOUR name) []:		Ali
-Email Address []:					sarsyazilim@gmail.com
-
-Please enter the following 'extra' attributes
-to be sent with your certificate request
-A challenge password []:a5134ba8
-An optional company name []:SARS
-
-
-
 --Son olarak, aşağıdaki komutu kullanarak bir sertifika dosyası oluşturun:
 openssl x509 -req -days 365 -in csr.pem -signkey key.pem -out cert.pem
 --Node.js'de HTTPS modülünü yükleyin:
@@ -31,7 +14,6 @@ const server = https.createServer({
 }, app);
 server.listen(443);
 --Burada key.pem ve cert.pem dosyalarının oluşturduğunuz özel anahtar ve sertifika dosyaları olduğuna emin olun.
-
 --Sunucunuzu çalıştırın:
 node server.js
 --Artık Node.js sunucunuz HTTPS protokolünü kullanarak çalışıyor olmalıdır. Tarayıcınızda https://localhost adresine giderek bunu kontrol edebilirsiniz.
