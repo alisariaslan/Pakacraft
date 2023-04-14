@@ -1,4 +1,5 @@
 /node_modules
 /minecraft_server
 /public
+/ssl
 .vs

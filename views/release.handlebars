@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Pakacraft</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <script src="js/remaining_timer.js"></script>
+  <script src="js/version.js"></script>
+  <script src="js/audio.js"></script>
+  <link rel="icon" href="images/favicon.ico?v=1.1">
+  <link rel="stylesheet" href="styles/release.css">
+
+</head>
+
+<body onload=" readFile('version.txt','version'); readFile('ip.txt','ip'); readFile('status.txt','status');">
+
+
+  <div class="w3-top op">
+    <div class="w3-row w3-large">
+      <div class="w3-col s3">
+        <a href="notifs" class="w3-button w3-block">Duyurular</a>
+      </div>
+      <div class="w3-col s3">
+        <a href="register" class="w3-button w3-block">Whitelist Kayıt Yaptır</a>
+      </div>
+      <div class="w3-col s3">
+        <a href="trynow" class="w3-button w3-block">İndir</a>
+      </div>
+      <div class="w3-col s3">
+        <a href="banlist" class="w3-button w3-block">Ban Listesi</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="parent w3-display-container w3-animate-opacity w3-text-white">
+    <div class="child w3-display-middle"> </div>
+    <div>
+      <a href="images/mobil.png">
+        <img class="w3-display-left" src="images/mobil.png" style="opacity: .75;" width="300px" height="200px">
+      </a>
+      <a href="images/pc.png">
+        <img class="w3-display-right" src="images/pc.png" style="opacity: .75;" width="300px" height="300px">
+      </a>
+    </div>
+    <div class="w3-display-bottomleft w3-padding-large w3-xlarge">
+      <div style="background-image: url(images/battle-icon.png)"></div>
+      <img class="disable" src="images/server-icon.jpg" width="200px" height="200px" style="opacity: .5;">
+    </div>
+    <div class="w3-display-bottomright w3-padding-large w3-xlarge">
+      <a href="https://www.linkedin.com/in/ali-sar%C4%B1aslan-954b83237/" width="200px" height="200px">
+        <img class="disable" src="images/sars-icon.jpg" width="200px" height="200px" style="opacity: .25;">
+      </a>
+    </div>
+    <div class="w3-display-topleft w3-padding-large w3-xlarge">
+      <br>
+      <br>
+      <h1 id="version">version.txt</h1>
+    </div>
+    <div class="w3-display-topright w3-padding-large w3-xlarge">
+      <br>
+      <h1 style="display: inline-block;">Sunucu durumu:&nbsp;&nbsp;&nbsp;</h1>
+      <h1 style="display: inline-block;" id="status">status.txt</h1>
+    </div>
+    <div class="w3-display-middle">
+      <h1 class="w3-jumbo w3-animate-top w3-center">PAKA CRAFT</h1>
+      <hr class="w3-border-grey">
+      <p class="w3-xlarge w3-center">
+        Pc IP Adresimiz:
+        <br>
+        alisariaslan.duckdns.org:25565
+        <br>
+        <br>
+        Tel IP Adresimiz:
+        <br>
+        alisariaslan.duckdns.org:19132
+      </p>
+      <p class="w3-large w3-center">Sunucuya girebilmek whitelist kaydı yapmanıza
+        şimdilik gerek yok. Fakat ileride whitelist zorunlu olacaktır.
+      </p>
+      <p class="w3-large w3-center">İletişim: sarsyazilim@gmail.com
+      </p>
+    </div>
+  </div>
+</body>
+
+</html>
