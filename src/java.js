@@ -24,7 +24,7 @@ var begin = process => {
     }
     else {
       console.log(my_date.getdatelog() + 'Minecraft sunucusu MANUEL KAPATILDI. Sunucu otomatik olarak yeniden başlatılmayacak!');
-      XML.UpdateXML('public/info.xml', 'state', 'Pasif');
+      XML.UpdateXML('public/info.xml', 'state', 'Kapalı');
       CMD.WaitInput();
     }
   })
@@ -33,7 +33,7 @@ var begin = process => {
       manuel_kapama = 1;
     if (data.includes("Done (")) {
       console.log(my_date.getdatelog() + 'Minecraft sunucusunun AKTİF olduğu bilgisi alındı.');
-      XML.UpdateXML('public/info.xml', 'state', 'Aktif');
+      XML.UpdateXML('public/info.xml', 'state', 'Açık');
     }
     if (data.includes("Stopping the server")) {
       console.log(my_date.getdatelog() + 'Minecraft sunucusu STOP komutu aldı! Sunucu kapatılıyor...')

@@ -20,12 +20,14 @@ function M_READ(file, id, target) {
 
 function C_CHANGE(id) {
     var a = document.getElementById(id);
-    if (a.innerHTML.includes("Pasif"))
+    if (a.innerHTML.includes("Kapalı"))
         a.style.color = "#ff0000";
-    else if (a.innerHTML.includes("Aktif"))
+    else if (a.innerHTML.includes("Açık"))
         a.style.color = "#00ff00";
     else if (a.innerHTML.includes("Başlatılıyor"))
         a.style.color = "#ffff00";
     else if (a.innerHTML.includes("Kapatılıyor"))
+        a.style.color = "#ffff00";
+    else if (a.innerHTML.includes("Bakımda"))
         a.style.color = "#ffff00";
 }

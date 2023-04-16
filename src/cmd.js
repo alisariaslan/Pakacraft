@@ -32,8 +32,15 @@ var WaitInput = exports.WaitInput = async function () {
     var c = XML.GetXML('public/info.xml', 'pc_link');
     console.log(c);
     WaitInput();
-  } else if (input.includes("set")) {
-    XML.UpdateXML('public/info.xml', 'version', '1.19.3');
+  } else if (input.includes('set state')) {
+    var state;
+    if (input.includes('0'))
+      XML.UpdateXML('public/info.xml', 'state', state = 'Kapalı');
+    else if (input.includes('1'))
+      XML.UpdateXML('public/info.xml', 'state', state = 'Açık');
+    else if (input.includes('2'))
+      XML.UpdateXML('public/info.xml', 'state', state = 'Bakımda');
+    console.log("Server Durumu Güncellendi: " + state);
     WaitInput();
   } else if (input.includes("exit")) {
     process.exit(1);
