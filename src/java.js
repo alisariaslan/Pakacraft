@@ -1,22 +1,27 @@
 var myArgs = process.argv.slice(2);
-var target_ram = myArgs[3];
-var target_file = myArgs[4];
+
+var minram = myArgs[4];
+var maxram = myArgs[5];
+var serverjar = myArgs[3];
 
 var { spawn } = require('child_process');
 var my_date = require('./../my_modules/my_date');
 var XML = require('./xml');
 var CMD = require('./cmd');
+var os = require('os');
 
 //MINECRAFT
-var minecraft_server = `cd minecraft_server && java -Xms${target_ram}G -Xmx${target_ram}G -jar ${target_file}`;
+var minecraft_server = `cd minecraft_server && java ${minram} ${maxram} -jar ${serverjar}`;
 var manuel_kapama = 0;
 
 var current_process = null;
 var begin = process => {
+
   process.on('spawn', function (data) {  //ON START
     console.log(my_date.getdatelog() + 'Minecraft sunucusu başlatılıyor...');
     XML.UpdateXML('public/info.xml', 'state', 'Başlatılıyor...');
   });
+
   process.on('close', () => {  //ON CLOSE
     if (!manuel_kapama) {
       console.log(my_date.getdatelog() + 'Minecraft sunucusu ÇÖKTÜ! Otomatik olarak yeniden başlatılacak.');
@@ -28,7 +33,9 @@ var begin = process => {
       CMD.WaitInput();
     }
   })
+
   process.stdout.on('data', function (data) {   //ON DATA
+    //console.log('stdout: ' + data);
     if (data.includes("INFO]: Stopping the server"))
       manuel_kapama = 1;
     if (data.includes("Done (")) {
@@ -46,7 +53,7 @@ var begin = process => {
   current_process = process;
 }
 
-exports.StartMCServer = function () {
+var StartMCServer = exports.StartMCServer = function () {
   begin(spawn(minecraft_server, { shell: true }));
 }
 

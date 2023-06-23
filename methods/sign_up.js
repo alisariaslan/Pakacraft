@@ -1,6 +1,10 @@
 var my_date = require('../my_modules/my_date');
 var User = require('../models/user');
-var main = require('../main');
+
+var XML = require('../src/xml');
+var CMD = require('../src/cmd');
+var DB = require('../src/db');
+var JAVA = require('../src/java');
 
 //SING UP FORM
 exports.signUp = async (req, res) => {
@@ -16,9 +20,19 @@ exports.signUp = async (req, res) => {
     if (user != null) {
         console.log(my_date.getdatelog() + "Daha önceden kayıt olmuş bir kullanıcı tekrar kayıt olmaya çalıştı: " + uname);
         res.render('register', {
-            already: true
+            haserror: true,
+            errormessage: 'Böyle bir kullanıcı zaten mevcut!'
         });
     } else {
+        if((JAVA.GetServerState()).includes("Açık") == false)
+        {
+            res.render('register', {
+                haserror: true,
+                errormessage: 'Sunucu aktif değilken kayıt yaptıramazsınız!'
+             });
+        return;
+        }
+
         var newUser = new User({
             username: uname,
             email: email,
@@ -31,8 +45,8 @@ exports.signUp = async (req, res) => {
         if(s!=null)
         {
             console.log(my_date.getdatelog() + "Yeni kullanıcı oluşturuldu: " + uname);
-            main.sendToProcess('easywl add ' + uname);
-            main.sendToProcess('say ' + uname + ' whitelist kaydini yaptirdi. Birazdan aramizda olur hep beraber hos geldin diyelim.');
+            JAVA.sendToProcess('easywl add ' + uname);
+            JAVA.sendToProcess('say ' + uname + ' whitelist kaydini yaptirdi. Birazdan aramizda olur hep beraber hos geldin diyelim.');
             res.render('verify_warn', {
                 uname: newUser.username,
                 pass: newUser.password

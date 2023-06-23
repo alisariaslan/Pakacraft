@@ -1,15 +1,3 @@
-body,
-html {
-  height: 100%
-}
-
-.bgimg {
-  background-image: url('../images/island.jpg');
-  min-height: 100%;
-  background-position: center;
-  background-size: cover;
-}
-
 .disable {
   pointer-events: none;
 }
@@ -68,7 +56,6 @@ canvas{
   pointer-events:none;
 }
 
-
 #captcha {
 display: inline-block;
 position: relative;
@@ -84,20 +71,4 @@ opacity: 0.5;
 60% {left:15vw;}
 80% {left:20vw;}
 100% {left:0vw;}
-}
-
-@font-face {
-  font-family: "Minecraft";
-  src: url("../fonts/Minecraft.ttf");
-  font-size: x-large;
-}
-
-h1 {
-  font-family: "Minecraft";
-  src: url("../fonts/Minecraft.ttf");
-}
-
-div {
-  font-family: "Minecraft";
-  src: url("../fonts/Minecraft.ttf");
 }
