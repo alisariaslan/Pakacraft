@@ -1,17 +1,19 @@
 //ARGV-ARGC
 var myArgs = process.argv.slice(2);
 
-if (myArgs.length != 6) {
-  console.log('Invalid Args! Example: "node main.js localhost 80 mongodb://127.0.0.1:27017/Minecraft paper-1.19.3-368.jar -Xms4G -Xmx4G"');
+if (myArgs.length < 6) {
+  console.log('Invalid Args! Example: "node main.js localhost 80 mongodb://127.0.0.1:27017/Minecraft paper-1.19.3-368.jar -Xms4G -Xmx4G -nogui -autostart"');
   return;
 }
- 
+
 var listen_ip = myArgs[0];
 var listen_port = myArgs[1];
 var db_conn = myArgs[2];
 var serverjar = myArgs[3];
 var minram = myArgs[4];
 var maxram = myArgs[5];
+var nogui = myArgs[6];
+var autostart = myArgs[7];
 
 //MODULES
 var express = require('express');

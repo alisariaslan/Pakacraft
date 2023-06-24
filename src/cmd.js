@@ -1,4 +1,4 @@
-var promptasync = require("prompt-async");
+var promptasync = require('prompt-async');
 var XML = require('./xml');
 var JAVA = require('./java');
 var preparestate = 0;
@@ -11,24 +11,40 @@ exports.PrepareForInput = function () {
 
 var ShowHelp = exports.ShowHelp = function () {
   console.log('KOMUTLAR');
+  console.log('exit: Projeyi kapatır.');
   console.log('start: Minecraft sunucusunu başlatır.');
   console.log('wait: 10 Saniye boyunca giriş bekletir.');
   console.log('wait long: 60 Saniye boyunca giriş bekletir.');
+  console.log('get ip: Sunucuya ait ip adresini getirir.');
+  console.log('get state: Web sunucusunun durumunu getirir.');
+  console.log('set state 0-1-2: Web sunucusunun durumunu günceller. 0 Kapalı, 1 Açık, 2 Bakımda');
+  console.log('OYUN İÇİ');
+  console.log('stop: Sunucuya dur komutunu gönderir.');
+  console.log('pakaCMD "command": Sunucuya komut gönderir.');
   WaitInput();
 }
 
 var WaitInput = exports.WaitInput = async function () {
   promptasync.start();
-  const { input } = await promptasync.get(["input"]);
-  if (input.includes("start"))
+  const { input } = await promptasync.get(['input']);
+  if (input.includes('start'))
     JAVA.StartMCServer();
-  else if (input.includes("help"))
-    ShowHelp();
-  else if (input.includes("wait long"))
-    setInterval(WaitInput, 60000);
-  else if (input.includes("wait"))
-    setInterval(WaitInput, 10000);
-  else if (input.includes("get")) {
+  else if (input.includes('wait long')) {
+    await new Promise(resolve => setTimeout(resolve, 60000));
+    WaitInput();
+  }
+  else if (input.includes('wait')) {
+    await new Promise(resolve => setTimeout(resolve, 10000));
+    WaitInput();
+  }
+  else if (input.includes('pakaCMD')) {
+    var rawcmd = input.substring(8);
+    console.log(rawcmd);
+    JAVA.sendToProcess(rawcmd);
+    WaitInput();
+  } else if (input.includes('stop'))
+    JAVA.sendToProcess('stop');
+  else if (input.includes('get ip')) {
     var c = XML.GetXML('public/info.xml', 'pc_link');
     console.log(c);
     WaitInput();
@@ -44,7 +60,7 @@ var WaitInput = exports.WaitInput = async function () {
     WaitInput();
   } else if (input.includes("exit")) {
     process.exit(1);
-  } else if (input.includes("state")) {
+  } else if (input.includes("get state")) {
     var state = JAVA.GetServerState();
     console.log(state);
     WaitInput();

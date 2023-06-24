@@ -1,8 +1,16 @@
 var myArgs = process.argv.slice(2);
 
+var serverjar = myArgs[3];
 var minram = myArgs[4];
 var maxram = myArgs[5];
-var serverjar = myArgs[3];
+
+
+
+var nogui = "";
+if (myArgs.includes('-nogui')) {
+  nogui = '-nogui';
+}
+
 
 var { spawn } = require('child_process');
 var my_date = require('./../my_modules/my_date');
@@ -11,7 +19,7 @@ var CMD = require('./cmd');
 var os = require('os');
 
 //MINECRAFT
-var minecraft_server = `cd minecraft_server && java ${minram} ${maxram} -jar ${serverjar}`;
+var minecraft_server = `cd minecraft_server && java ${minram} ${maxram} -jar ${serverjar} ${nogui}`;
 var manuel_kapama = 0;
 
 var current_process = null;
@@ -34,13 +42,18 @@ var begin = process => {
     }
   })
 
-  process.stdout.on('data', function (data) {   //ON DATA
-    //console.log('stdout: ' + data);
+  process.stdout.on('data', async function (data) {   //ON DATA
+    if (myArgs.includes('-nogui'))
+      console.log('stdout: ' + data);
     if (data.includes("INFO]: Stopping the server"))
       manuel_kapama = 1;
-    if (data.includes("Done (")) {
+    if (data.includes('For help, type "help"')) {
       console.log(my_date.getdatelog() + 'Minecraft sunucusunun AKTİF olduğu bilgisi alındı.');
       XML.UpdateXML('public/info.xml', 'state', 'Açık');
+      if (myArgs.includes('-nogui')) {
+        await new Promise(resolve => setTimeout(resolve, 10000));
+        CMD.ShowHelp();
+      }
     }
     if (data.includes("Stopping the server")) {
       console.log(my_date.getdatelog() + 'Minecraft sunucusu STOP komutu aldı! Sunucu kapatılıyor...')
@@ -58,7 +71,7 @@ var StartMCServer = exports.StartMCServer = function () {
 }
 
 exports.GetServerState = function () {
-  return XML.GetXML('public/info.xml','state');
+  return XML.GetXML('public/info.xml', 'state');
 }
 
 var sendToProces = exports.sendToProcess = function (data) {
