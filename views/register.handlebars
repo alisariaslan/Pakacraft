@@ -2,55 +2,49 @@
 <html>
 
 <head>
-  <title>Kayıt ol</title>
+  <title>Register</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
   <link rel="icon" href="images/favicon.ico?v=1.1">
- 
-  
   <script src="js/validate.js"></script>
   <script src="js/captcha.js"></script>
-
   <link rel="stylesheet" href="styles/font.css">
   <link rel="stylesheet" href="styles/general.css">
   <link rel="stylesheet" href="styles/topnav.css">
 
-   <link rel="stylesheet" href="styles/register.css">
+  <link rel="stylesheet" href="styles/register.css">
 </head>
 
 
 <body onload="createCaptcha();">
 
- <div class="background" />
+  <div class="background" />
 
   <div class="topnav" id="myTopnav">
-    <a href="index">Ana Sayfa</a>
-    <a href="register"  class="active disable">Kayıt Ol</a>
-    <a href="notifs">Duyurular</a>
-    <a href="files">Dosyalar</a>
-		<a href="banlist">Banlar</a>
+    <a href="index"><<</a>
+    <a href="register" class="active disable">Register</a>
   </div>
 
   <div class=" w3-display-middle w3-animate-opacity w3-text-white custom">
 
-      {{#if haserror}}
-      <h1 class="w3-xlarge w3-animate-top" style="color: #111">{{errormessage}}</h1>
-      {{else}}
-      <h1 class="w3-xlarge w3-animate-top" style="color: #111">Minecraft kullanıcı adınız ile buraya yazacağınız kullanıcı adı aynı olmalıdır!</h1>
-      {{/if}}
-      <form name="myForm" action="/sign_up" onsubmit="return validateForm()" method="POST">
-        <input class="w3-animate-top " type="text" name="username" placeholder="Kullanıcı adı">
-        <input class="w3-animate-top" type="text" name="email" placeholder="E-Mail">
+    {{#if haserror}}
+    <h1 class="w3-xlarge w3-animate-top" style="color: #111">{{errormessage}}</h1>
+    {{else}}
+    <h1 class="w3-xlarge w3-animate-top" style="color: #111">Your Minecraft username and the username you write here
+      must be the same!</h1>
+    {{/if}}
+    <form name="myForm" action="/sign_up" onsubmit="return validateForm()" method="POST">
+      <input class="w3-animate-top " type="text" name="username" placeholder="Username">
+      <input class="w3-animate-top" type="text" name="email" placeholder="E-Mail">
 
-        <h1 id="captcha"></h1>
-        <input type="text" id="cpatchaTextBox" placeholder="Captha Doğrulama Kodu" />
+      <h1 id="captcha"></h1>
+      <input type="text" id="cpatchaTextBox" placeholder="Captha" />
 
-        <input class="button w3-animate-top" type="submit" value="Şimdi Kayıt Ol" style="background-color: crimson;">
+      <input class="button w3-animate-top" type="submit" value="Register" style="background-color: crimson;">
 
-      </form>
-      </p>
+    </form>
+    </p>
 
   </div>
 

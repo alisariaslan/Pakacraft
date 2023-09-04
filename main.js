@@ -31,12 +31,10 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 app.use(routes);
-
 //HANDLEBAR
 var handlebars = require('express3-handlebars').create();
 app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
-
 
 function start_http() {
   var server = app.listen(listen_port, listen_ip, function () {
@@ -50,7 +48,6 @@ function start_http() {
 start_http();
 
 function start_subscripts() {
-
   var XML = require('./src/xml');
   var CMD = require('./src/cmd');
   var DB = require('./src/db');

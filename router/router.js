@@ -6,17 +6,16 @@ const panelController = require('../methods/sign_up');
 router.get('/', function (req, res, next) { res.render('index'); });
 
 router.get('/index', function (req, res, next) { res.render('index'); });
-router.get('/notifs', function (req, res, next) { res.render('notifs'); });
-router.get('/files', function (req, res, next) { res.render('files'); });
-router.get('/error', function (req, res, next) { res.render('error'); });
-
-router.get('/trynow', function (req, res, next) { res.render('trynow'); });
-router.get('/verify_success', function (req, res, next) { res.render('verify_success'); });
-router.get('/verify_warn', function (req, res, next) { res.render('verify_warn'); });
-
-router.get('/banlist', function (req, res, next) { res.render('banlist'); });
-
 router.get('/register', function (req, res, next) { res.render('register'); });
+router.get('/register_success', function (req, res, next) { res.render('register_success'); });
+router.get('/notifications', function (req, res, next) { res.render('notifications'); });
+router.get('/files', function (req, res, next) { res.render('files'); });
+router.get('/banlist', function (req, res, next) { res.render('banlist'); });
+router.get('/error', function (req, res, next) { res.render('error'); });
+router.get('/perms', function (req, res, next) { res.render('perms'); });
+router.get('/location', function (req, res, next) { res.render('location'); });
+router.get('/gallery', function (req, res, next) { res.render('gallery'); });
+router.get('/vip', function (req, res, next) { res.render('vip'); });
 //POST
 router.post('/sign_up', panelController.signUp);
 

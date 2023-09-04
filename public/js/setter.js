@@ -20,14 +20,14 @@ function M_READ(file, id, target) {
 
 function C_CHANGE(id) {
     var a = document.getElementById(id);
-    if (a.innerHTML.includes("Kapalı"))
+    if (a.innerHTML.includes("Closed"))
         a.style.color = "#ff0000";
-    else if (a.innerHTML.includes("Açık"))
+    else if (a.innerHTML.includes("Open"))
         a.style.color = "#00ff00";
-    else if (a.innerHTML.includes("Başlatılıyor"))
+    else if (a.innerHTML.includes("Starting"))
         a.style.color = "#ffff00";
-    else if (a.innerHTML.includes("Kapatılıyor"))
+    else if (a.innerHTML.includes("Closing"))
         a.style.color = "#ffff00";
-    else if (a.innerHTML.includes("Bakımda"))
+    else if (a.innerHTML.includes("In Maintenance"))
         a.style.color = "#ffff00";
 }

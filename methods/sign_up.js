@@ -15,20 +15,19 @@ exports.signUp = async (req, res) => {
     if (uname == "" || email == "" || uname < 3 || uname > 20 || email < 3 || email > 40)
         return res.redirect('error');
 
-
     var user = await User.findOne({ username: uname });
     if (user != null) {
-        console.log(my_date.getdatelog() + "Daha önceden kayıt olmuş bir kullanıcı tekrar kayıt olmaya çalıştı: " + uname);
+        console.log(my_date.getdatelog() + "This user trying to register again: " + uname);
         res.render('register', {
             haserror: true,
-            errormessage: 'Böyle bir kullanıcı zaten mevcut!'
+            errormessage: 'User already exists!'
         });
     } else {
-        if((JAVA.GetServerState()).includes("Açık") == false)
+        if((JAVA.GetServerState()).includes("Open") == false)
         {
             res.render('register', {
                 haserror: true,
-                errormessage: 'Sunucu aktif değilken kayıt yaptıramazsınız!'
+                errormessage: 'You cannot register when the server is not open!'
              });
         return;
         }
@@ -44,15 +43,15 @@ exports.signUp = async (req, res) => {
         const s = await newUser.save();
         if(s!=null)
         {
-            console.log(my_date.getdatelog() + "Yeni kullanıcı oluşturuldu: " + uname);
+            console.log(my_date.getdatelog() + "New user has been registered: " + uname);
             JAVA.sendToProcess('easywl add ' + uname);
-            JAVA.sendToProcess('say ' + uname + ' whitelist kaydini yaptirdi. Birazdan aramizda olur hep beraber hos geldin diyelim.');
-            res.render('verify_warn', {
+            JAVA.sendToProcess('say ' + uname + ' whitelisted. He will be with us soon, lets say welcome all together.');
+            res.render('register_success', {
                 uname: newUser.username,
                 pass: newUser.password
             });
         } else {
-            console.log(my_date.getdatelog() + "Yeni kullanıcı oluşturulurken HATA ALINDI! -> " + error);
+            console.log(my_date.getdatelog() + "Error occured while new user registration! -> " + error);
             return res.redirect('error');
         }
     }

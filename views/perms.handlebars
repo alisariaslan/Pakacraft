@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Perms</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="icon" href="images/favicon.ico?v=1.1">
+  <link rel="stylesheet" href="styles/font.css">
+  <link rel="stylesheet" href="styles/general.css">
+  <link rel="stylesheet" href="styles/topnav.css">
+
+  <style>
+    .item {
+      display: inline-block;
+      width: 200px;
+      height: 350px;
+      opacity: .9;
+      transition: ease-in-out .25s;
+    }
+
+    .item:hover {
+      opacity: 1;
+      transition: ease-in-out .25s;
+    }
+
+    .item_img {
+      width: 150px;
+      height: 150px;
+      margin: auto;
+      display: block;
+    }
+
+    .item_txt {
+      text-align: center;
+      overflow: hidden;
+      height: 150px;
+    }
+
+    .item_lnk {
+      text-decoration: none;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      transition: opacity 500ms;
+      visibility: hidden;
+      opacity: 0;
+    }
+
+    .overlay:target {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    @media only screen and (min-width: 1600px) {
+      .popup {
+        max-width: 40%;
+        max-height: 60%;
+      }
+    }
+
+    @media only screen and (max-width: 1600px) {
+      .popup {
+        max-width: 50%;
+        max-height: 70%;
+      }
+    }
+
+    @media only screen and (max-width: 1200px) {
+      .popup {
+        max-width: 60%;
+        max-height: 80%;
+      }
+    }
+
+    @media only screen and (max-width: 800px) {
+      .popup {
+        max-width: 70%;
+        max-height: 90%;
+      }
+    }
+
+    .popup {
+      margin: 70px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 5px;
+      position: relative;
+      transition: all 1s ease-in-out;
+      overflow-y: scroll;
+    }
+
+    .popup h2 {
+      padding-right: 30px;
+      margin-top: 0;
+      color: #333;
+    }
+
+    .popup .close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      transition: all 200ms;
+      font-size: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      color: #333;
+    }
+
+    .popup .close:hover {
+      color: #06D85F;
+    }
+
+    .popup .content {
+      max-height: 100%;
+
+        {
+          {
+          !-- overflow: auto;
+          --
+        }
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background" />
+
+  <div class="topnav" id="myTopnav">
+    <a href="index">
+      << </a>
+        <a href="perms" class="active disable">Perms</a>
+  </div>
+
+  <div style="padding: 30px;">
+    <div class="w3-animate-left">
+
+      <div class="item">
+        <a class="item_lnk" href="#popup1">
+          <h3 class="item_txt">Trading Perms</h3>
+          <img class="item_img"
+            src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/7/74/Oak_Sign_%280%29.png"
+            style="transform: scale(1.25);">
+        </a>
+      </div>
+      <div class="item">
+        <a class="item_lnk" href="#popup2">
+          <h3 class="item_txt">All Warp Perms</h3>
+          <img class="item_img" src="https://static.wikia.nocookie.net/minecraft-computer/images/9/92/Compass.png"
+            style="transform: scale(1);">
+        </a>
+      </div>
+
+      <div class="item">
+        <a class="item_lnk" href="#popup3">
+          <h3 class="item_txt">Home Perms</h3>
+          <img class="item_img"
+            src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/5/5e/Golden_Shovel_JE1.png"
+            style="transform: scale(1.25);">
+        </a>
+      </div>
+      <div class="item">
+        <a class="item_lnk" href="#popup4">
+          <h3 class="item_txt">Auction Perms</h3>
+          <img class="item_img"
+            src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/26/Emerald_JE3_BE3.png"
+            style="transform: scale(1.25);">
+        </a>
+      </div>
+
+
+      <div class="item">
+        <a class="item_lnk" href="#popup8">
+          <h3 class="item_txt">Lucky Chest Perms</h3>
+          <img class="item_img"
+            src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/1/11/Chest_%28S%29_BE1.png"
+            style="transform: scale(1);">
+        </a>
+      </div>
+      <div class="item">
+        <a class="item_lnk" href="#popup8">
+          <h3 class="item_txt">Random Teleport Perm</h3>
+          <img class="item_img" src="https://wiki.hypixel.net/images/b/b1/Minecraft_entities_enderman.png"
+            style="transform: scale(1.25); width: 60px;">
+        </a>
+      </div>
+
+      <div class="item">
+        <a class="item_lnk" href="#popup10">
+          <h3 class="item_txt">Clan Perms</h3>
+          <img class="item_img"
+            src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/0/01/Iron_Sword_JE1_BE1.png"
+            style="transform: scale(1.25);">
+        </a>
+      </div>
+      <div class="item">
+        <a class="item_lnk" href="#popup13">
+          <h3 class="item_txt">Mail Perms</h3>
+          <img class="item_img"
+            src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/7/74/Oak_Sign_%280%29.png"
+            style="transform: scale(1.25);">
+        </a>
+      </div>
+      <div class="item">
+        <a class="item_lnk" href="#popup9">
+          <h3 class="item_txt">Horse Perms</h3>
+          <img class="item_img" src="https://static.miraheze.org/mcdiscontinuedwiki/c/c3/Horse.png"
+            style="transform: scale(1.25);">
+        </a>
+      </div>
+      <div class="item">
+        <a class="item_lnk" href="#popup7">
+          <h3 class="item_txt">Job Perms</h3>
+          <img class="item_img"
+            src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/26/Emerald_JE3_BE3.png"
+            style="transform: scale(1.25);">
+        </a>
+      </div>
+      <div class="item">
+        <a class="item_lnk" href="#popup6">
+          <h3 class="item_txt">Miner Perm</h3>
+          <img class="item_img" src="https://i.stack.imgur.com/hvzBS.png" style="transform: scale(1);">
+        </a>
+      </div>
+      <div class="item">
+        <a class="item_lnk" href="#popup5">
+          <h3 class="item_txt">Buy Region Perm</h3>
+          <img class="item_img"
+            src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/2/26/Emerald_JE3_BE3.png"
+            style="transform: scale(1.25);">
+        </a>
+      </div>
+      <div class="item">
+        <a class="item_lnk" href="#popup12">
+          <h3 class="item_txt">Rank Upgrade</h3>
+          <img class="item_img"
+            src="https://www.pngkey.com/png/full/51-510502_minecraft-diamond-png-minecraft-diamond-no-background.png"
+            style="transform: scale(1);">
+        </a>
+      </div>
+
+      <div id="popup1" class="overlay">
+        <div class="popup">
+          <h2>How can i get this permissions?</h2>
+          <a class="close" href="#">&times;</a>
+          <div class="content">
+            You can earn these permission by completing quest named "Trade Permissions".
+            <br>
+            You can take this quest from the market owner Rick in the Dereli Village.
+          </div>
+        </div>
+      </div>
+      <div id="popup2" class="overlay">
+        <div class="popup">
+          <h2>How can i get this permissions?</h2>
+          <a class="close" href="#">&times;</a>
+          <div class="content">
+            To -> Neighbor Village -> Complete the quest named: "Trade", (Rick in the Dereli Village)
+            <br> <br>
+            To -> Traders River -> Complete the quest named: "Auction Permissions", (Alexandra in the Traders River)
+            <br> <br>
+            To -> Border Outpost -> Complete the quest named: "Bad News", (Guard in the Dereli Village)
+            <br> <br>
+            To -> Jack's Place -> Complete the quest named: "Outpost Maintenanc", (Chief Guard in the Border Outpost)
+            <br> <br>
+            To -> Martin's Farm -> Complete the quest named: "Food Supplies", (Chief Guard in the Border Outpost)
+            <br> <br>
+            To -> Dereli Castle -> Complete the quest named: "Message to the Lord", (Headmen in the Neighbor Village)
+            <br> <br>
+            To -> Dereli Town -> Complete the quest named: "Do joke for me", (Mayor Alfie in the Dereli Town)
+            <br> <br>
+            To -> End -> Complete the quest named: "In times of need", (Crazy Man in the End enterance)
+            <br> <br>
+            To -> Nether -> Complete the quest named: "Hell problems", (Hell Guard in the Global Nether Base)
+            <br>
+          </div>
+        </div>
+      </div>
+      <div id="popup3" class="overlay">
+        <div class="popup">
+          <h2>How can i get this permissions?</h2>
+          <a class="close" href="#">&times;</a>
+          <div class="content">
+            Well, you need to earn these permissions by completing quest named "Home Permissions".
+            <br>
+            You can take this quest from the Headman in the Neighbor Village.
+          </div>
+        </div>
+      </div>
+      <div id="popup4" class="overlay">
+        <div class="popup">
+          <h2>How can i get this permissions?</h2>
+          <a class="close" href="#">&times;</a>
+          <div class="content">
+            Well, you need to earn these permissions by completing quest named "Auctionhouse Permissions".
+            <br>
+            You can take this quest from the Alexandra in the Traders River.
+          </div>
+        </div>
+      </div>
+      <div id="popup8" class="overlay">
+        <div class="popup">
+          <h2>How can i get this permissions?</h2>
+          <a class="close" href="#">&times;</a>
+          <div class="content">
+            Well, you need to earn these permissions by completing quest named "Rapunzel".
+            <br>
+            You can take this quest from the iron golem in the Mysterious Tower.
+          </div>
+        </div>
+      </div>
+      <div id="popup10" class="overlay">
+        <div class="popup">
+          <h2>How can i get this permissions?</h2>
+          <a class="close" href="#">&times;</a>
+          <div class="content">
+            Well, you need to earn these permissions by completing quest named "Clan Permissions".
+            <br>
+            You can take this quest from the Imperial Officer in the Dereli Castle.
+          </div>
+        </div>
+      </div>
+      <div id="popup13" class="overlay">
+        <div class="popup">
+          <h2>How can i get this permissions?</h2>
+          <a class="close" href="#">&times;</a>
+          <div class="content">
+            Well, you need to earn these permissions by completing quest named "Mail Permissions".
+            <br>
+            You can take this quest from the Castle Officer in the Dereli Castle.
+          </div>
+        </div>
+      </div>
+      <div id="popup9" class="overlay">
+        <div class="popup">
+          <h2>How can i get this permissions?</h2>
+          <a class="close" href="#">&times;</a>
+          <div class="content">
+            Well, you need to earn these permissions by completing quest named "Horse Permissions".
+            <br>
+            You can take this quest from the Martin in the Martin's Farm.
+          </div>
+        </div>
+      </div>
+      <div id="popup7" class="overlay">
+        <div class="popup">
+          <h2>How can i get this permissions?</h2>
+          <a class="close" href="#">&times;</a>
+          <div class="content">
+            Well, you need to earn these permissions by completing quest named "Job Permissions".
+            <br>
+            You can take this quest from the Bazaar Manager in the Dereli Town.
+          </div>
+        </div>
+      </div>
+      <div id="popup6" class="overlay">
+        <div class="popup">
+          <h2>How can i get this permissions?</h2>
+          <a class="close" href="#">&times;</a>
+          <div class="content">
+            Well, you need to earn these permissions by completing quest named "Being a Miner".
+            <br>
+            You can take this quest from the Legend Miner in the Dereli Mines.
+          </div>
+        </div>
+      </div>
+      <div id="popup5" class="overlay">
+        <div class="popup">
+          <h2>How can i get this permissions?</h2>
+          <a class="close" href="#">&times;</a>
+          <div class="content">
+            Well, you need to earn these permissions by completing quest named "Buy & Rent Regions Permissions".
+            <br>
+            You can take this quest from the Town Officer in the Dereli Town.
+          </div>
+        </div>
+      </div>
+      <div id="popup12" class="overlay">
+        <div class="popup">
+          <h2>How can i upgrade my rank?</h2>
+          <a class="close" href="#">&times;</a>
+          <div class="content">
+            Well, you need to talk with Mayor Alfie in the Dereli Town.
+            <br>
+            If you have enough quest points you can upgrade your rank to Wanderer and you will gain access one essential
+            command freely "/craft".
+          </div>
+        </div>
+      </div>
+
+
+
+
+    </div>
+  </div>
+
+</body>
+
+</html>

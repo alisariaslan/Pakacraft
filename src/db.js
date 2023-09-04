@@ -11,9 +11,9 @@ var mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
 mongoose.connect(mongodb_connection_string);
 var db = mongoose.connection;
-db.on('error', console.log.bind(console, my_date.getdatelog() + "MongoDB veritabanı bağlantısı hatalı!"));
+db.on('error', console.log.bind(console, my_date.getdatelog() + "MongoDB connection error!"));
 db.once('open', function (callback) {
-  console.log(my_date.getdatelog() + "MongoDB veritabanı bağlantısı başarılı.");
+  console.log(my_date.getdatelog() + "MongoDB connection success.");
   if (myArgs.includes('-autostart'))
     JAVA.StartMCServer();
   else CMD.ShowHelp();
