@@ -1,1 +1,2 @@
-node main.js mylocal.com 8003 mongodb://127.0.0.1:27017/pakacraft paper-1.19.3-368.jar -Xms2G -Xmx2G -nogui -autostartoff -noinput
+node main.js localhost 10103
+pause
