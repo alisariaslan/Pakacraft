@@ -1,9 +1,12 @@
 const express = require('express')
 const router = express.Router();
-
+var sign = require('./sign');
 //GET
 router.get('/', function (req, res, next) { res.render('index'); });
 router.get('/index', function (req, res, next) { res.render('index'); });
+router.get('/register', function (req, res, next) { res.render('register'); });
+router.post('/register', sign.signUp);
+router.get('/success', function (req, res, next) { res.render('success'); });
 router.get('/notifications', function (req, res, next) { res.render('notifications'); });
 router.get('/files', function (req, res, next) { res.render('files'); });
 router.get('/banlist', function (req, res, next) { res.render('banlist'); });

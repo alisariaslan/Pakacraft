@@ -1,80 +1,78 @@
 var promptasync = require('prompt-async');
-var XML = require('./xml');
-var JAVA = require('./java');
-var preparestate = 0;
+var xml = require('./xml');
+var java = require('./java');
+var cmd_state = 0;
 
-exports.PrepareForInput = function () {
-  preparestate++;
-  if (preparestate == 1)
-    ShowHelp();
-}
-
-var ShowHelp = exports.ShowHelp = function () {
-  console.log('KOMUTLAR');
-  console.log('exit: Projeyi kapatır.');
-  console.log('clear: Konsolu temizler.');
-  console.log('start: Minecraft sunucusunu başlatır.');
-  console.log('wait: 10 Saniye boyunca giriş bekletir.');
-  console.log('wait long: 60 Saniye boyunca giriş bekletir.');
-  console.log('get ip: Sunucuya ait ip adresini getirir.');
-  console.log('get state: Web sunucusunun durumunu getirir.');
-  console.log('set state 0-1-2: Web sunucusunun durumunu günceller. 0 Closed, 1 Open, 2 In Maintenance');
-  console.log('exit: Projeyi kapatır.');
-  console.log('OYUN İÇİ');
-  console.log('stop: Sunucuya dur komutunu gönderir.');
-  console.log('pakaCMD "command": Sunucuya komut gönderir.');
+var ShowHelp = exports.ShowHelp = function (type = 0) {
+  if (type == 0) {
+    console.log('FOR PROJECT COMMANDS');
+    console.log('exit:            Closes the project.');
+    console.log('help:            Shows avaible commands.');
+    console.log('clear:           Console clear.');
+    console.log('start:           Starts Minecraft Server.');
+    console.log('wait:            Waits 10 seconds.');
+    console.log('wait long:       Waits 60 seconds.');
+    console.log('ip:              Shows IP in the info.xml');
+    console.log('state:           Shows STATE in the info.xml');
+    console.log('state 0-1-2:     Updates STATE in the info.xml -> 0: Closed, 1: Open, 2: In Maintenance');
+  }
+  else {
+    console.log('FOR PROCESS COMMANDS');
+    console.log('stop:            Sends stop signal to process.');
+    console.log('send "command":  Sends command to process.');
+  }
   WaitInput();
 }
 
 var WaitInput = exports.WaitInput = async function () {
+  if (cmd_state == 1)
+    return;
+  cmd_state = 1;
   promptasync.start();
   const { input } = await promptasync.get(['input']);
-  if (input.includes('start'))
-    JAVA.StartMCServer();
-  else if (input.includes('help'))
+
+  if (input.includes("exit")) {
+    process.exit(1);
+  }
+  else if (input.includes('help')) {
     ShowHelp();
+  }
   else if (input.includes('clear')) {
     console.clear();
-    WaitInput();
   }
-  else if (input.includes('wait long')) {
-    await new Promise(resolve => setTimeout(resolve, 60000));
-    WaitInput();
+  else if (input.includes('start')) {
+    java.StartServer();
   }
   else if (input.includes('wait')) {
     await new Promise(resolve => setTimeout(resolve, 10000));
-    WaitInput();
   }
-  else if (input.includes('pakaCMD')) {
-    var rawcmd = input.substring(8);
-    console.log(rawcmd);
-    JAVA.sendToProcess(rawcmd);
-    WaitInput();
-  } else if (input.includes('stop'))
-    JAVA.sendToProcess('stop');
-  else if (input.includes('get ip')) {
-    var c = XML.GetXML('public/info.xml', 'pc_link');
+  else if (input.includes('wait long')) {
+    await new Promise(resolve => setTimeout(resolve, 60000));
+  }
+  else if (input.includes('ip')) {
+    var c = xml.GetXML('public/info.xml', 'pc_link');
     console.log(c);
-    WaitInput();
-  } else if (input.includes('set state')) {
+  } else if (input.includes('state')) {
     var state;
     if (input.includes('0'))
-      XML.UpdateXML('public/info.xml', 'state', state = 'Closed');
+      xml.UpdateXML('public/info.xml', 'state', state = 'Closed');
     else if (input.includes('1'))
-      XML.UpdateXML('public/info.xml', 'state', state = 'Open');
+      xml.UpdateXML('public/info.xml', 'state', state = 'Open');
     else if (input.includes('2'))
-      XML.UpdateXML('public/info.xml', 'state', state = 'In Maintenance');
-    console.log("Server state changed to: " + state);
-    WaitInput();
-  } else if (input.includes("exit")) {
-    process.exit(1);
-  } else if (input.includes("get state")) {
-    var state = JAVA.GetServerState();
-    console.log(state);
-    WaitInput();
+      xml.UpdateXML('public/info.xml', 'state', state = 'In Maintenance');
+    else
+      console.log("Server state: " + java.GetState());
+  }
+  else if (input.includes('stop')) {
+    java.StopServer();
+  }
+  else if (input.startsWith('send')) {
+    var rawcmd = input.substring(5);
+    java.SendToProces(rawcmd);
   }
   else {
     console.log('Invalid command! (help)');
-    WaitInput();
   }
+  cmd_state = 0;
+  WaitInput();
 }

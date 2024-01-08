@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Register</title>
+  <title>Whitelist</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -12,43 +12,31 @@
   <link rel="stylesheet" href="styles/font.css">
   <link rel="stylesheet" href="styles/general.css">
   <link rel="stylesheet" href="styles/topnav.css">
-
   <link rel="stylesheet" href="styles/register.css">
 </head>
 
-
 <body onload="createCaptcha();">
-
   <div class="background" />
-
   <div class="topnav" id="myTopnav">
-    <a href="index"><<</a>
-    <a href="register" class="active disable">Register</a>
+    <a href="index">
+      <<</a>
+        <a href="register" class="active disable">Whitelist</a>
   </div>
-
   <div class=" w3-display-middle w3-animate-opacity w3-text-white custom">
-
     {{#if haserror}}
     <h1 class="w3-xlarge w3-animate-top" style="color: #111">{{errormessage}}</h1>
     {{else}}
-    <h1 class="w3-xlarge w3-animate-top" style="color: #111">Your Minecraft username and the username you write here
+    <h1 class="w3-xlarge w3-animate-top" style="color: #111">Your ingame username and the username you write here
       must be the same!</h1>
     {{/if}}
-    <form name="myForm" action="/sign_up" onsubmit="return validateForm()" method="POST">
+    <form name="myForm" action="/register" onsubmit="return validateForm()" method="POST">
       <input class="w3-animate-top " type="text" name="username" placeholder="Username">
-      <input class="w3-animate-top" type="text" name="email" placeholder="E-Mail">
-
       <h1 id="captcha"></h1>
       <input type="text" id="cpatchaTextBox" placeholder="Captha" />
-
       <input class="button w3-animate-top" type="submit" value="Register" style="background-color: crimson;">
-
     </form>
     </p>
-
   </div>
-
-
 
 </body>
 
